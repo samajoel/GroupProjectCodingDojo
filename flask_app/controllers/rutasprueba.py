@@ -16,7 +16,7 @@ def index2():
 
 
 
-@app.route('/languagues')
+@app.route('/languages')
 def index3():
     return render_template('skills.html')
 
@@ -24,3 +24,12 @@ def index3():
 @app.route('/dashboard')
 def index4():
     return render_template('dashboard.html')
+
+
+
+
+@app.route('/org/jobs/new')
+def index5():
+    return render_template('addposition.html')
+
+

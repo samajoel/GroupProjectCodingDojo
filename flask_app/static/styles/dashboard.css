@@ -13,6 +13,9 @@ body {
         flex-direction: column;
     }
     
+a {
+    text-decoration: none;
+}
     
     .content {
         display: flex;
@@ -91,8 +94,21 @@ body {
         color: white
     }
     
+    .lposition {
+        width: 90%;
+        height: 90%;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
     
-    
+    .lposition a {
+        color: whitesmoke;
+    }
+
+
     
     
     
