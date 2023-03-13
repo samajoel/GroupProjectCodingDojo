@@ -33,3 +33,17 @@ def index5():
     return render_template('addposition.html')
 
 
+
+
+
+
+@app.route('/org/jobs/test')
+def index6():
+    return render_template('availabledevs.html')
+
+
+
+
+
+
+
