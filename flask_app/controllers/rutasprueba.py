@@ -13,3 +13,9 @@ def index():
 @app.route('/registerorg')
 def index2():
     return render_template('registerorg.html')
+
+
+
+@app.route('/skills')
+def index3():
+    return render_template('skills.html')
