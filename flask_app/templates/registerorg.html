@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/registerorg.css') }}">
+    <title>Web Sales</title>
+</head>
+<body>
+  <div class="container-fluid">
+    
+
+    <!-- nav----------------------- -->
+    <div class="navbar">
+      <div class="navbar">
+
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">App --</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">App--</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/templates/registerdev.html">Dev Registration</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/templates/registerorg.html">Org Registration</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Log Out &#128683</a>
+                  </li>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+    </div>
+
+
+    <!-- nav----------------------- -->
+
+    <div class="content">
+      
+      <div class="col2">
+        <div class="saleschart">
+            <h1>Organization Sign Up</h1>
+            <form>
+              <label for="adddres">Org Name:</label>
+              <input class="form-control" type="text" placeholder="Organization Name" aria-label="default input example">
+                <div class="name">
+                    <label for="name">Name:</label>
+                <input class="form-control" type="text" placeholder="Name" aria-label="default input example">
+                <label for="lastname">Last Name:</label>
+                <input class="form-control" type="text" placeholder="Last Name" aria-label="default input example">
+                </div>
+                <label for="email">Email:</label>
+                <input class="form-control" type="email" placeholder="Email" aria-label="default input example">
+                <label for="adddres">Address:</label>
+                <input class="form-control" type="addres" placeholder="Addres" aria-label="default input example">
+                
+                <div class="location">
+                <label for="city">City:</label>
+                <input class="form-control" type="text" placeholder="City" aria-label="default input example">
+                <label for="state">State:</label>
+                <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                    <option selected>Select State</option>
+                    <option value="1">AL</option>
+                    <option value="2">AK</option>
+                    <option value="3">AZ</option>
+                    <option value="4">AR</option>
+                    <option value="5">CA</option>
+                    <option value="6">CO</option>
+                    <option value="7">CT</option>
+                    <option value="8">DE</option>
+                    <option value="9">FL</option>
+                    <option value="10">GA</option>
+                    <option value="11">HI</option>
+                    <option value="12">ID</option>
+                    <option value="13">IL</option>
+                    <option value="14">IN</option>
+                    <option value="15">IA</option>
+                    <option value="16">KS</option>
+                    <option value="17">KY</option>
+                    <option value="18">LA</option>
+                    <option value="19">ME</option>
+                    <option value="20">MD</option>
+                    <option value="21">MA</option>
+                    <option value="22">MI</option>
+                    <option value="23">MN</option>
+                    <option value="24">MS</option>
+                    <option value="25">MO</option>
+                    <option value="26">MT</option>
+                    <option value="27">NE</option>
+                    <option value="28">NV</option>
+                    <option value="29">NH</option>
+                    <option value="30">NJ</option>
+                    <option value="31">NM</option>
+                    <option value="32">NY</option>
+                    <option value="33">NC</option>
+                    <option value="34">ND</option>
+                    <option value="35">OH</option>
+                    <option value="36">OK</option>
+                    <option value="37">OR</option>
+                    <option value="38">PA</option>
+                    <option value="39">RI</option>
+                    <option value="40">SC</option>
+                    <option value="41">SD</option>
+                    <option value="42">TN</option>
+                    <option value="43">TX</option>
+                    <option value="44">UT</option>
+                    <option value="45">VT</option>
+                    <option value="46">VA</option>
+                    <option value="47">WA</option>
+                    <option value="48">WV</option>
+                    <option value="49">WI</option>
+                    <option value="50">WY</option>
+                  </select>
+                </div>
+
+
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                <input type="password" name="confirm" class="form-control" id="exampleInputPassword1">
+                <div class="submit">
+                <button type="submit" class="btn btn-lg btn-success" disabled>Register</button>
+                </div>
+              </form>
+              <a href="{{ url_for('index') }}">Need to Sign Up a Developer?</a>
+        </div>
+    
+    </div>
+
+
+
+
+    
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
