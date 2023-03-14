@@ -153,6 +153,14 @@ i:hover {
   flex-wrap: wrap;
 }
 
+.bio {
+    margin: 2%;
+    width: 30%;
+    height: 80%;
+    border-radius: 30px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
 
 .language {
   width: 120px;

@@ -36,10 +36,15 @@ def index5():
 
 
 
-
 @app.route('/org/jobs/test')
 def index6():
     return render_template('availabledevs.html')
+
+
+
+@app.route('/dev/skills/frameworks')
+def index7():
+    return render_template('frameworks.html')
 
 
 
