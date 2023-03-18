@@ -159,9 +159,13 @@
                                     </div>
                                 </div>
                                 <div class="bio"> <h1>Short Bio Here</h1>
-                                    <textarea name="short_bio" rows="15" cols="30" placeholder="Short Bio.">
-                                        {{dev_shortBio.short_bio}}
-                                    </textarea>
+                                    {% if  dev_shortBio.short_bio == None %}
+                                        <textarea name="short_bio" rows="15" cols="30" placeholder="Short Bio."></textarea>
+                                    {% else %}
+                                        <textarea name="short_bio" rows="15" cols="30" placeholder="Short Bio.">
+                                            {{dev_shortBio.short_bio}}
+                                        </textarea>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="botones">
