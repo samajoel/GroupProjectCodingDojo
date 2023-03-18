@@ -128,11 +128,6 @@ i {
    font-size: 70px;
 }
 
-/*QUITA EL SUBRAYADO DE LOS ENLACES DE TIPO <a>*/
-a:link {
-  text-decoration:none;
-}
-
 i:hover {
   font-size: 80px;
 }
@@ -156,6 +151,14 @@ i:hover {
   border-radius: 30px;
   overflow-y: scroll;
   flex-wrap: wrap;
+}
+
+.bio {
+    margin: 2%;
+    width: 30%;
+    height: 80%;
+    border-radius: 30px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 
@@ -187,8 +190,6 @@ i:hover {
 
 
 .botones {
-  display: flex;
-  justify-content: end;
   margin-left: auto;
   margin-right: 2%;
 }

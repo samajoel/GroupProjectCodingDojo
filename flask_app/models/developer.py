@@ -4,7 +4,7 @@ from flask_app import app
 from flask import flash
 import re # El módulo regex
 from flask_bcrypt import Bcrypt
-# from flask_app.models.recipe import Recipe
+from flask_app.models.skill import Skill
 bcrypt = Bcrypt(app)     # estamos creando un objeto llamado bcrypt,
                                 # que se realiza invocando la función Bcrypt con nuestra aplicación como argumento
 
@@ -30,7 +30,7 @@ class Developer():
         self.available = data['available']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        # self.recetas = []
+        self.skills = []
 
     @classmethod
     def create_developer(cls,data):
@@ -52,7 +52,7 @@ class Developer():
     def get_one(cls,data):
         query = "SELECT * FROM developers WHERE developers.id = %(id)s;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
-        # print('Esto tiene el mostrar en la posición 0:', result[0])
+        print('Esto tiene el get_one:', result[0])
         return cls(result[0])
 
     @classmethod
@@ -78,27 +78,32 @@ class Developer():
         else:
             return None
     
-    """
+    
     @classmethod
-    def get_recipe_and_user(cls):
-        query = "SELECT * FROM users LEFT JOIN recipes ON  users.id = recipes.user_id"
-        results =  connectToMySQL(cls.db_name).query_db(query)
-        print('Contenido de results: ',results)
-        user = cls(results[0])
+    def get_skill_by_developer(cls, data):
+        query = """SELECT first_name, last_name, email, github_user, address, city, state, password, short_bio, available, created_at, updated_at, 
+                    skill_id AS id, name, tipo, devicon
+                    FROM developers
+                    LEFT JOIN skills_of_developers
+                    ON developers.id = skills_of_developers.developer_id
+                    LEFT JOIN skills
+                    ON skills_of_developers.skill_id = skills.id
+                    WHERE developers.id = %(id)s;"""
+        results =  connectToMySQL(cls.db_name).query_db(query,data)
+        print('CONTENIDO de results completo: ', results)
+        print('Contenido de results[0]: ',results[0])
+        developer = cls(results[0])
         for result in results:
-            receta_data = {
-                'id': result['recipes.id'],
+            skill_data = {
+                'id': result['id'],
                 'name': result['name'],
-                'description': result['description'],
-                'instructions': result['instructions'],
-                'under30': result['under30'],
-                'date_made': result['date_made'],
-                'created_at': result['recipes.created_at'],
-                'updated_at': result['recipes.updated_at'],
-                'user_id': result['user_id']
+                'tipo': result['tipo'],
+                'devicon': result['devicon']
             }
-            user.recetas.append(Recipe(receta_data))
-        return user """
+            
+            developer.skills.append(Skill(skill_data))
+        print('ESTO tiene DEVELOPER: ', developer)
+        return developer
 
 
     @classmethod
@@ -107,6 +112,15 @@ class Developer():
         query = """UPDATE developers SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s, github_user=%(github_user)s, address=%(address)s, city=%(city)s, state=%(state)s,
                     password=%(password)s, short_bio=%(short_bio)s, available=%(available)s, updated_at = NOW() WHERE id = %(id)s"""
         return connectToMySQL(cls.db_name).query_db(query,data)
+
+
+    @classmethod
+    def update_short_bio(cls, data):
+        # print('Estoy en el método UPDATE y soy el data: ', data)
+        query = "UPDATE developers SET short_bio=%(short_bio)s, updated_at = NOW() WHERE id = %(id)s"
+        result = connectToMySQL(cls.db_name).query_db(query,data)
+        return result
+
 
     @classmethod
     def destroy(cls,data):
