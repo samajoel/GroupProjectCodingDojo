@@ -83,7 +83,7 @@
                             {% endwith %}
                             <div class="skillspicked">
                                 {% for dev in developer.skills %}
-                                    <a href="/delete_Skill/{{dev.id}}/{{dev.name}}"><i class="devicon-{{dev.devicon}}"></i></a>
+                                    <a href="/delete_Skill_lang/{{dev.id}}/{{dev.name}}"><i class="devicon-{{dev.devicon}}"></i></a>
                                 {% endfor %}
                             <!--<i class="devicon-r-original colored"></i>
                             <i class="devicon-go-original-wordmark colored"></i>
@@ -162,9 +162,7 @@
                                     {% if  dev_shortBio.short_bio == None %}
                                         <textarea name="short_bio" rows="15" cols="30" placeholder="Short Bio."></textarea>
                                     {% else %}
-                                        <textarea name="short_bio" rows="15" cols="30" placeholder="Short Bio.">
-                                            {{dev_shortBio.short_bio}}
-                                        </textarea>
+                                        <textarea name="short_bio" rows="15" cols="30" placeholder="Short Bio.">{{dev_shortBio.short_bio}}</textarea>
                                     {% endif %}
                                 </div>
                             </div>

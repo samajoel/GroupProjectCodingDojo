@@ -57,92 +57,127 @@
                 <div class="pgcontainer">
                     <h1>Add Your Skills</h1>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% if cant_Skill == 1 %}
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 2 %}
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 3 %}
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 4 %}
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 5 %}
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 6 %}
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 7 %}
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 8 %}
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 9 %}
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% elif cant_Skill == 10 %}
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        {% endif %}
                     </div>
                     </div>
                     <div class="languages">
                         <h1>Pick Your Top Five Frameworks or Libraries</h1>
+                        <!--Si es que no existe el Skill entonces se lanza un mensaje 'Skill Inexistente'-->
+                        {% with messages = get_flashed_messages(category_filter=['skill_fram']) %}
+                            {% if messages %}
+                                <div class="alert alert-danger alerta" role="alert">
+                                    {% for message in messages %}
+                                        <p>{{message}}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %} 
+                        {% endwith %}
                         <div class="skillspicked">
-                            <i class="devicon-d3js-plain colored"></i>
+                            {% for dev in developer.skills %}
+                                    <a href="/delete_Skill_fram/{{dev.id}}/{{dev.name}}"><i class="devicon-{{dev.devicon}}"></i></a>
+                                {% endfor %}
+                            <!-- <i class="devicon-d3js-plain colored"></i>
                             <i class="devicon-jest-plain colored"></i>
                             <i class="devicon-redux-original colored"></i>
                             <i class="devicon-selenium-original colored"></i>
-                            <i class="devicon-docker-plain-wordmark colored"></i>
+                            <i class="devicon-docker-plain-wordmark colored"></i> -->
                         </div>
                     </div>
                     <div class="scrollbio">
 
                         <div class="scroll"> 
                             <div class="language">
-                                <i class="devicon-kaggle-original-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/21/kaggle"><i class="devicon-kaggle-original-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-jest-plain colored"></i>
+                                <a href="/topfiveskill_fram/22/jest"><i class="devicon-jest-plain colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-mysql-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/23/mysql"><i class="devicon-mysql-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-react-original-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/24/react"><i class="devicon-react-original-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-selenium-original colored"></i>
+                                <a href="/topfiveskill_fram/25/selenium"><i class="devicon-selenium-original colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-redux-original colored"></i>
+                                <a href="/topfiveskill_fram/26/redux"><i class="devicon-redux-original colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-slack-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/27/slack"><i class="devicon-slack-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-vscode-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/28/vscode"><i class="devicon-vscode-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-django-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/29/django"><i class="devicon-django-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-docker-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/30/docker"><i class="devicon-docker-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-composer-line-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/31/composer"><i class="devicon-composer-line-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-apache-line-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/32/apache"><i class="devicon-apache-line-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-angularjs-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/33/angularjs"><i class="devicon-angularjs-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/34/amazonwebservices"><i class="devicon-amazonwebservices-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-azure-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/35/azure"><i class="devicon-azure-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-d3js-plain colored"></i>
+                                <a href="/topfiveskill_fram/36/d3js"><i class="devicon-d3js-plain colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-flask-original-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/37/flask"><i class="devicon-flask-original-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-gitter-plain-wordmark colored"></i>
+                                <a href="/topfiveskill_fram/38/gitter"><i class="devicon-gitter-plain-wordmark colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-mocha-plain colored"></i>
+                                <a href="/topfiveskill_fram/39/mocha"><i class="devicon-mocha-plain colored"></i></a>
                             </div>
                             <div class="language">
-                                <i class="devicon-oracle-original colored"></i>
+                                <a href="/topfiveskill_fram/40/oracle"><i class="devicon-oracle-original colored"></i></a>
                             </div>
                         
                         </div>
                         
                         <div class="bio">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida turpis vitae libero pulvinar, eget condimentum metus fermentum. Vivamus at feugiat enim, vitae sagittis libero. Donec accumsan nibh justo, non ultricies ex porttitor nec. Donec tempor, nisl et iaculis suscipit, urna velit malesuada eros, a tristique enim mauris ultrices augue. Nullam imperdiet gravida mi, non vestibulum metus efficitur vitae. Suspendisse non arcu mattis, pharetra sapien eget, cursus mauris. Phasellus placerat massa quis nisi blandit, sed rutrum ligula maximus.
+                            Maecenas nec aliquet enim. Vivamus euismod tellus consectetur, sollicitudin magna quis, consequat nulla. Pellentesque faucibus cursus vehicula. Duis ullamcorper diam quis dignissim malesuada. Morbi pretium egestas venenatis. Vivamus a feugiat dolor. Phasellus commodo ipsum nibh, eget aliquam ante sagittis et.
                         </div>
 
                     </div>
                     <div class="botones">
 
-                    <button type="button" class="btn btn-primary btn-lg">COMPLETE PROFILE</button>
+                    <a href="/devs/dashboard_dev" class="btn btn-primary btn-lg">COMPLETE PROFILE</a>
                     </div>
                 
             </div>

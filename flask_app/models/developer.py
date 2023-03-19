@@ -80,7 +80,7 @@ class Developer():
     
     
     @classmethod
-    def get_skill_by_developer(cls, data):
+    def get_skill_lang_by_developer(cls, data):
         query = """SELECT first_name, last_name, email, github_user, address, city, state, password, short_bio, available, created_at, updated_at, 
                     skill_id AS id, name, tipo, devicon
                     FROM developers
@@ -88,23 +88,101 @@ class Developer():
                     ON developers.id = skills_of_developers.developer_id
                     LEFT JOIN skills
                     ON skills_of_developers.skill_id = skills.id
-                    WHERE developers.id = %(id)s;"""
+                    WHERE developers.id = %(id)s AND skills.tipo = 'lang';"""
         results =  connectToMySQL(cls.db_name).query_db(query,data)
         print('CONTENIDO de results completo: ', results)
-        print('Contenido de results[0]: ',results[0])
-        developer = cls(results[0])
-        for result in results:
-            skill_data = {
-                'id': result['id'],
-                'name': result['name'],
-                'tipo': result['tipo'],
-                'devicon': result['devicon']
-            }
-            
-            developer.skills.append(Skill(skill_data))
-        print('ESTO tiene DEVELOPER: ', developer)
-        return developer
+        if len(results) > 0 :
+            print('Contenido de results[0]: ',results[0])
+            developer = cls(results[0])
+            for result in results:
+                skill_data = {
+                    'id': result['id'],
+                    'name': result['name'],
+                    'tipo': result['tipo'],
+                    'devicon': result['devicon']
+                }
+                
+                developer.skills.append(Skill(skill_data))
+            print('ESTO tiene DEVELOPER: ', developer)
+            return developer
+        else:
+            query = """SELECT first_name, last_name, email, github_user, address, city, state, password, short_bio, available, created_at, updated_at, 
+                    skill_id AS id, name, tipo, devicon
+                    FROM developers
+                    LEFT JOIN skills_of_developers
+                    ON developers.id = skills_of_developers.developer_id
+                    LEFT JOIN skills
+                    ON skills_of_developers.skill_id = skills.id
+                    WHERE developers.id = %(id)s;"""
+            results =  connectToMySQL(cls.db_name).query_db(query,data)
+            print('CONTENIDO de results completo: ', results)
+            print('Contenido de results[0]: ',results[0])
+            developer = cls(results[0])
+            for result in results:
+                skill_data = {
+                    'id': None,
+                    'name': None,
+                    'tipo': None,
+                    'devicon': None
+                }
+                
+                developer.skills.append(Skill(skill_data))
+            print('ESTO tiene DEVELOPER: ', developer)
+            return developer
+        
 
+    
+    @classmethod
+    def get_skill_fram_by_developer(cls, data):
+        query = """SELECT first_name, last_name, email, github_user, address, city, state, password, short_bio, available, created_at, updated_at, 
+                    skill_id AS id, name, tipo, devicon
+                    FROM developers
+                    LEFT JOIN skills_of_developers
+                    ON developers.id = skills_of_developers.developer_id
+                    LEFT JOIN skills
+                    ON skills_of_developers.skill_id = skills.id
+                    WHERE developers.id = %(id)s AND skills.tipo = 'fram';"""
+
+        results =  connectToMySQL(cls.db_name).query_db(query,data)
+        print('CONTENIDO de results completo: ', results)
+        if len(results) > 0 :
+            print('Contenido de results[0]: ',results[0])
+            developer = cls(results[0])
+            for result in results:
+                skill_data = {
+                    'id': result['id'],
+                    'name': result['name'],
+                    'tipo': result['tipo'],
+                    'devicon': result['devicon']
+                }
+                
+                developer.skills.append(Skill(skill_data))
+            print('ESTO tiene DEVELOPER: ', developer)
+            return developer
+        else:
+            query = """SELECT first_name, last_name, email, github_user, address, city, state, password, short_bio, available, created_at, updated_at, 
+                    skill_id AS id, name, tipo, devicon
+                    FROM developers
+                    LEFT JOIN skills_of_developers
+                    ON developers.id = skills_of_developers.developer_id
+                    LEFT JOIN skills
+                    ON skills_of_developers.skill_id = skills.id
+                    WHERE developers.id = %(id)s;"""
+            results =  connectToMySQL(cls.db_name).query_db(query,data)
+            print('CONTENIDO de results completo: ', results)
+            print('Contenido de results[0]: ',results[0])
+            developer = cls(results[0])
+            for result in results:
+                skill_data = {
+                    'id': None,
+                    'name': None,
+                    'tipo': None,
+                    'devicon': None
+                }
+                
+                developer.skills.append(Skill(skill_data))
+            print('ESTO tiene DEVELOPER: ', developer)
+            return developer
 
     @classmethod
     def update(cls, data):

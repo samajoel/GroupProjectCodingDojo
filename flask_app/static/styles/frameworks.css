@@ -132,6 +132,10 @@ i:hover {
   font-size: 80px;
 }
 
+/*QUITA EL SUBRAYADO DE LOS ENLACES DE TIPO <a>*/
+a:link {
+  text-decoration:none;
+}
 
 .scrollbio {
     display: flex;
