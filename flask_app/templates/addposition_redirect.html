@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/addposition.css') }}">
+    <title>Web Sales</title>
+</head>
+<body>
+    <div class="container-fluid">
+        
+
+        <!-- nav----------------------- -->
+        <div class="navbar">
+
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">App --</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">App--</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/templates/registerdev.html">Dev Registration</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/templates/registerorg.html">Org Registration</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Log Out &#128683</a>
+                    </li>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+        </div>
+
+
+        <!-- nav----------------------- -->
+
+        <div class="content">
+        
+            <div class="col2">
+                    <div class="saleschart">
+                        <div class="pgcontainer">
+                            <h1>Add Position</h1>
+            
+                        </div>
+                        <div class="skillspicked">
+                            {% for skill in all_skill_by_position.skills %}
+                                    <a href="/delete_Skill_position/{{skill.id}}/{{skill.name}}/{{position.id}}"><i class="devicon-{{skill.devicon}}"></i></a>
+                            {% endfor %}
+                            <!-- <i class="devicon-r-original colored"></i>
+                            <i class="devicon-go-original-wordmark colored"></i>
+                            <i class="devicon-c-plain colored"></i>
+                            <i class="devicon-java-plain-wordmark colored"></i>
+                            <i class="devicon-php-plain colored"></i> -->
+                        </div>
+                        
+                            <div class="formcontainer">
+                                {% with messages = get_flashed_messages(category_filter=['add_position_redirect']) %}
+                                    {% if messages %}
+                                        <div class="alert alert-danger alerta" role="alert">
+                                            {% for message in messages %}
+                                                <p>{{message}}</p>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
+                                <form action="{{url_for('update_position')}}" method="POST">
+                                    <input class="form-control" type="text" name="id" aria-label="default input example" value="{{position.id}}" hidden>
+                                    <label for="name">Name</label>
+                                    <input class="form-control" type="text" name="name" placeholder="Nombre" aria-label="default input example" value="{{position.name}}" required>
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea class="form-control" name="description" placeholder="Add a description" id="exampleFormControlTextarea1" rows="3" required>{{position.description}}</textarea>
+                                    </div>
+                                    <div class="botones">
+                                        <button type="submit" class="btn btn-primary btn-lg">Update Position</button>
+                                    </div>
+                                </form>
+                                <label for="asd">Skill</label>
+                                <div class="scrollbox">
+
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/1/python/{{position.id}}"><i class="devicon-python-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/2/bash/{{position.id}}"><i class="devicon-bash-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/3/c/{{position.id}}"><i class="devicon-c-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/4/embeddedc/{{position.id}}"><i class="devicon-embeddedc-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/5/go/{{position.id}}"><i class="devicon-go-original-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/6/javascript/{{position.id}}"><i class="devicon-javascript-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/7/java/{{position.id}}"><i class="devicon-java-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/8/kotlin/{{position.id}}"><i class="devicon-kotlin-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/9/r/{{position.id}}"><i class="devicon-r-original colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/10/rails/{{position.id}}"><i class="devicon-rails-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/11/ruby/{{position.id}}"><i class="devicon-ruby-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/12/rust/{{position.id}}"><i class="devicon-rust-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/13/solidity/{{position.id}}"><i class="devicon-solidity-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/14/swift/{{position.id}}"><i class="devicon-swift-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/15/typescript/{{position.id}}"></a><i class="devicon-typescript-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/16/perl/{{position.id}}"><i class="devicon-perl-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/17/php/{{position.id}}"><i class="devicon-php-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/18/haskell/{{position.id}}"><i class="devicon-haskell-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/19/flutter/{{position.id}}"><i class="devicon-flutter-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/20/julia/{{position.id}}"><i class="devicon-julia-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/21/kaggle/{{position.id}}"><i class="devicon-kaggle-original-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/22/jest/{{position.id}}"><i class="devicon-jest-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/23/mysql/{{position.id}}"><i class="devicon-mysql-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/24/react/{{position.id}}"><i class="devicon-react-original-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/25/selenium/{{position.id}}"><i class="devicon-selenium-original colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/26/redux/{{position.id}}"><i class="devicon-redux-original colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/27/slack/{{position.id}}"><i class="devicon-slack-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/28/vscode/{{position.id}}"><i class="devicon-vscode-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/29/django/{{position.id}}"><i class="devicon-django-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/30/docker/{{position.id}}"><i class="devicon-docker-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/31/composer/{{position.id}}"><i class="devicon-composer-line-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/32/apache/{{position.id}}"><i class="devicon-apache-line-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/33/angularjs/{{position.id}}"><i class="devicon-angularjs-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/34/amazonwebservices/{{position.id}}"><i class="devicon-amazonwebservices-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/35/azure/{{position.id}}"><i class="devicon-azure-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/36/d3js/{{position.id}}"><i class="devicon-d3js-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/37/flask/{{position.id}}"><i class="devicon-flask-original-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/38/gitter/{{position.id}}"><i class="devicon-gitter-plain-wordmark colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/39/mocha/{{position.id}}"><i class="devicon-mocha-plain colored"></i></a>
+                                    </div>
+                                    <div class="language">
+                                        <a href="/five_skill_of_position/40/oracle/{{position.id}}"><i class="devicon-oracle-original colored"></i></a>
+                                    </div>
+                            
+                                </div> <!-- /scrollbox -->
+
+                                <!--
+                                <div class="botones">
+                                    <button type="submit" class="btn btn-primary btn-lg">Add Position</button>
+                                </div>-->
+
+                            </div> <!-- /formcontainer -->
+
+                    </div> <!-- /saleschart -->
+                
+            </div> <!-- /col2 -->
+
+        </div> <!-- /content -->
+
+    </div><!-- /container-fluid -->
+
+
+</body>
+</html>

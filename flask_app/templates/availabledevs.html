@@ -33,30 +33,28 @@
                     <h1>Front-End Developer</h1>
                 </div>
                 <div class="scrollbox">
-
+                    {% for all_dev in allDevelopers %}
                     <div class="availability">
                         <div class="nameskills">
-                            <h1><a href="">Jane Doe</a></h1>
-                            <div class="progress">
+                            <h1><a href="">{{all_dev.first_name}}</a></h1>
+                            <!--<div class="progress">
                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Match 25%</div>
-                            </div>
+                            </div>-->
+                            <!--
                             <div class="skills">        
                                 <i class="fa-brands fa-html5"></i>
                                 <i class="fa-brands fa-java"></i>
                                 <i class="fa-brands fa-square-js"></i>
                                 <i class="fa-brands fa-python"></i>
-                                <i class="fa-brands fa-css3-alt"></i></div>
+                                <i class="fa-brands fa-css3-alt"></i>
+                            </div>-->
                         </div>
                         <div class="scroll">
-                            <p>Lorem Ipsum is simply dummy text of the printing and 
-                                typesetting industry. Lorem Ipsum has been the industry's 
-                                standard dummy text ever since the 1500s, when an unknown 
-                                printer took a galley of type and scrambled it to make a type 
-                                specimen book. It has survived not only five centuries, but also the 
-                                leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <p>{{all_dev.short_bio}}</p>
                         </div>
                     
                     </div>
+                    {% endfor %}
                 
 
                 </div>

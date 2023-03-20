@@ -32,13 +32,13 @@
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/templates/registerdev.html">Dev Registration</a>
+                    <a class="nav-link active" aria-current="page" href="/devs/login">Dev Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/templates/registerorg.html">Org Registration</a>
+                    <a class="nav-link" href="/orgs/login">Org Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Log Out &#128683</a>
+                    <a class="nav-link" href="/logout">Log Out &#128683</a>
                   </li>
               </div>
             </div>
@@ -53,83 +53,97 @@
     <div class="content">
       
       <div class="col2">
+        {% with messages = get_flashed_messages(category_filter=['register_org']) %}
+            {% if messages %}
+                <div class="alert alert-danger alerta" role="alert">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %} 
+        {% endwith %}
         <div class="saleschart">
             <h1>Organization Sign Up</h1>
-            <form>
-              <label for="adddres">Org Name:</label>
-              <input class="form-control" type="text" placeholder="Organization Name" aria-label="default input example">
+            <form action="{{url_for('register_new_org')}}" method="POST">
+                <label for="org_name">Org Name:</label>
+                <input class="form-control" type="text" name="org_name" placeholder="Organization Name" aria-label="default input example">
+
                 <label for="email">Email:</label>
-                <input class="form-control" type="email" placeholder="Email" aria-label="default input example">
-                <label for="adddres">Address:</label>
-                <input class="form-control" type="addres" placeholder="Addres" aria-label="default input example">
-                
-                <div class="location">
-                  <label for="city">City:</label>
-                  <input class="form-control" type="text" placeholder="City" aria-label="default input example">
-                  <label for="state">State:</label>
-                  <select class="form-select form-select-sm mb-3" name="state" aria-label=".form-select-lg example">
-                    <option selected>Select State</option>
-                    <option value="Alabama">Alabama</option>
-                    <option value="Alaska">Alaska</option>
-                    <option value="Arizona">Arizona</option>
-                    <option value="Arkansas">Arkansas</option>
-                    <option value="California">California</option>
-                    <option value="Carolina del Norte">Carolina del Norte</option>
-                    <option value="Carolina del Sur">Carolina del Sur</option>
-                    <option value="Colorado">Colorado</option>
-                    <option value="Connecticut">Connecticut</option>
-                    <option value="Dakota del Norte">Dakota del Norte</option>
-                    <option value="Dakota del Sur">Dakota del Sur</option>
-                    <option value="Delaware">Delaware</option>
-                    <option value="Florida">Florida</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Hawái">Hawái</option>
-                    <option value="Idaho">Idaho</option>
-                    <option value="Illinois">Illinois</option>
-                    <option value="Indiana">Indiana</option>
-                    <option value="Iowa">Iowa</option>
-                    <option value="Kansas">Kansas</option>
-                    <option value="Kentucky">Kentucky</option>
-                    <option value="Luisiana">Luisiana</option>
-                    <option value="Maine">Maine</option>
-                    <option value="Maryland">Maryland</option>
-                    <option value="Massachusetts">Massachusetts</option>
-                    <option value="Míchigan">Míchigan</option>
-                    <option value="Minnesota">Minnesota</option>
-                    <option value="Misisipi">Misisipi</option>
-                    <option value="Misuri">Misuri</option>
-                    <option value="Montana">Montana</option>
-                    <option value="Nebraska">Nebraska</option>
-                    <option value="Nevada">Nevada</option>
-                    <option value="Nueva Jersey">Nueva Jersey</option>
-                    <option value="Nueva York">Nueva York</option>
-                    <option value="Nuevo Hampshire">Nuevo Hampshire</option>
-                    <option value="Nuevo México">Nuevo México</option>
-                    <option value="Ohio">Ohio</option>
-                    <option value="Oklahoma">Oklahoma</option>
-                    <option value="Oregón">Oregón</option>
-                    <option value="Pensilvania">Pensilvania</option>
-                    <option value="Rhode Island">Rhode Island</option>
-                    <option value="Tennessee">Tennessee</option>
-                    <option value="Texas">Texas</option>
-                    <option value="Utah">Utah</option>
-                    <option value="Vermont">Vermont</option>
-                    <option value="Virginia">Virginia</option>
-                    <option value="Virginia Occidental">Virginia Occidental</option>
-                    <option value="Washington">Washington</option>
-                    <option value="Wisconsin">Wisconsin</option>
-                    <option value="Wyoming">Wyoming</option>
-                  </select>
-                </div>
+                <input class="form-control" type="email" name="email" placeholder="Email" aria-label="default input example">
+
+                <label for="address">Address:</label>
+                <input class="form-control" type="addres" name="address" placeholder="Addres" aria-label="default input example">
+                  
+                  <div class="location">
+                    <label for="city">City:</label>
+                    <input class="form-control" type="text" name="city" placeholder="City" aria-label="default input example">
+
+                    <label for="state">State:</label>
+                    <select class="form-select form-select-sm mb-3" name="state" aria-label=".form-select-lg example">
+                      <option selected>Select State</option>
+                      <option value="Alabama">Alabama</option>
+                      <option value="Alaska">Alaska</option>
+                      <option value="Arizona">Arizona</option>
+                      <option value="Arkansas">Arkansas</option>
+                      <option value="California">California</option>
+                      <option value="Carolina del Norte">Carolina del Norte</option>
+                      <option value="Carolina del Sur">Carolina del Sur</option>
+                      <option value="Colorado">Colorado</option>
+                      <option value="Connecticut">Connecticut</option>
+                      <option value="Dakota del Norte">Dakota del Norte</option>
+                      <option value="Dakota del Sur">Dakota del Sur</option>
+                      <option value="Delaware">Delaware</option>
+                      <option value="Florida">Florida</option>
+                      <option value="Georgia">Georgia</option>
+                      <option value="Hawái">Hawái</option>
+                      <option value="Idaho">Idaho</option>
+                      <option value="Illinois">Illinois</option>
+                      <option value="Indiana">Indiana</option>
+                      <option value="Iowa">Iowa</option>
+                      <option value="Kansas">Kansas</option>
+                      <option value="Kentucky">Kentucky</option>
+                      <option value="Luisiana">Luisiana</option>
+                      <option value="Maine">Maine</option>
+                      <option value="Maryland">Maryland</option>
+                      <option value="Massachusetts">Massachusetts</option>
+                      <option value="Míchigan">Míchigan</option>
+                      <option value="Minnesota">Minnesota</option>
+                      <option value="Misisipi">Misisipi</option>
+                      <option value="Misuri">Misuri</option>
+                      <option value="Montana">Montana</option>
+                      <option value="Nebraska">Nebraska</option>
+                      <option value="Nevada">Nevada</option>
+                      <option value="Nueva Jersey">Nueva Jersey</option>
+                      <option value="Nueva York">Nueva York</option>
+                      <option value="Nuevo Hampshire">Nuevo Hampshire</option>
+                      <option value="Nuevo México">Nuevo México</option>
+                      <option value="Ohio">Ohio</option>
+                      <option value="Oklahoma">Oklahoma</option>
+                      <option value="Oregón">Oregón</option>
+                      <option value="Pensilvania">Pensilvania</option>
+                      <option value="Rhode Island">Rhode Island</option>
+                      <option value="Tennessee">Tennessee</option>
+                      <option value="Texas">Texas</option>
+                      <option value="Utah">Utah</option>
+                      <option value="Vermont">Vermont</option>
+                      <option value="Virginia">Virginia</option>
+                      <option value="Virginia Occidental">Virginia Occidental</option>
+                      <option value="Washington">Washington</option>
+                      <option value="Wisconsin">Wisconsin</option>
+                      <option value="Wyoming">Wyoming</option>
+                    </select>
+                  </div>
 
 
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                <input type="password" name="confirm" class="form-control" id="exampleInputPassword1">
-                <div class="submit">
-                <button type="submit" class="btn btn-lg btn-success" disabled>Register</button>
-                </div>
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+
+                  <label for="confir_password" class="form-label">Confirm Password</label>
+                  <input type="password" name="confir_password" class="form-control" id="exampleInputPassword1">
+
+                  <div class="submit">
+                    <button type="submit" class="btn btn-lg btn-success">Register</button>
+                  </div>
               </form>
               <a href="{{ url_for('index') }}">Need to Sign Up a Developer?</a>
         </div>

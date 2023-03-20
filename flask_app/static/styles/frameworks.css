@@ -1,201 +1,196 @@
 body {
-    background-color: gainsboro;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .content {
-    display: flex;
-    width: 100%;
-    height: 900px;
-    background-color: gainsboro;
-    align-items: center;
-    justify-content: center;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(70, 107, 136) 50%, rgb(0, 212, 255) 90%);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-    border-radius: 30px;
-  }
-  
-  .col2 {
-    width: 80%;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5%;
-    border-radius: 30px;
-    margin: 20px;
-  }
-  
-  .saleschart {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    margin: 5%;
-    border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    align-items: center;
-  }
-  
-  .name {
-    display: flex;
-    width: 100%;
-  }
-  
-  .location {
-    width: 100%;
-    display: flex;
-    margin: 1%;
-    align-items: center;
-    justify-content: center;
-    padding: 1%;
-  }
-  
-  .submit {
-    width: 100%;
-    display: flex;
-    padding: 2%;
-    align-items: end;
-  }
-  
-  .select {
-    justify-content: center;
-    align-items: center;
-    margin: 1%;
-  }
+  background-color: gainsboro;
+}
 
-  .pgcontainer {
-    width: 100%;
-    height: 15%;
-    background: rgb(34,193,195);
-    background: linear-gradient(0deg, rgba(34,193,195,1) 24%, rgba(253,187,45,1) 100%);
-    border-radius: 30px 30px 0px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2%;
-    
-   
-
-
-  }
-
-  .progress {
-    width: 15%;
-  }
-
-
-.languages {
-    width: 100%;
-    height: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2%;
-    background-color: white;
-} 
-
-.skillspicked {
-  padding: 1%;
-  width: 35%;
-  height: 170%;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  border-radius: 30px;
+.container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  height: 900px;
+  background-color: gainsboro;
+  align-items: center;
+  justify-content: center;
+  background: #FEF9EF;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  border-radius: 30px;
+}
+
+.col2 {
+  width: 80%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+  border-radius: 30px;
+  margin: 20px;
+}
+
+.saleschart {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  margin: 5%;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
   align-items: center;
 }
 
-.skillspicked:hover {
-  box-shadow: none;
-  background-color: gainsboro;
-  color: black;
+.name {
+  display: flex;
+  width: 100%;
+}
+
+.location {
+  width: 100%;
+  display: flex;
   margin: 1%;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
+}
+
+.submit {
+  width: 100%;
+  display: flex;
+  padding: 2%;
+  align-items: end;
+}
+
+.select {
+  justify-content: center;
+  align-items: center;
+  margin: 1%;
+}
+
+.pgcontainer {
+  width: 100%;
+  height: 15%;
+  background: #17C3B2;
+  border-radius: 30px 30px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2%;
+  
+ 
+
+
+}
+
+.progress {
+  width: 15%;
+}
+
+
+.languages {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2%;
+  background-color: white;
+} 
+
+.skillspicked {
+padding: 1%;
+width: 35%;
+height: 170%;
+box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+border-radius: 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+}
+
+.skillspicked:hover {
+box-shadow: none;
+background-color: gainsboro;
+color: black;
+margin: 1%;
 }
 
 
 
 i {
-   font-size: 70px;
+ font-size: 70px;
 }
 
 i:hover {
-  font-size: 80px;
+font-size: 80px;
 }
 
-/*QUITA EL SUBRAYADO DE LOS ENLACES DE TIPO <a>*/
-a:link {
-  text-decoration:none;
-}
 
 .scrollbio {
-    display: flex;
-    width: 100%;
-    height: 60%;
-    justify-content: space-around
-    
+  display: flex;
+  width: 100%;
+  height: 60%;
+  justify-content: space-around
+  
 }
 
 .scroll {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  height: 90%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  border-radius: 30px;
-  overflow-y: scroll;
-  flex-wrap: wrap;
+display: flex;
+justify-content: space-around;
+align-items: center;
+width: 50%;
+height: 90%;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+border-radius: 30px;
+overflow-y: scroll;
+flex-wrap: wrap;
 }
 
 .bio {
-    margin: 2%;
-    width: 30%;
-    height: 80%;
-    border-radius: 30px;
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  margin: 2%;
+  width: 30%;
+  height: 80%;
+  border-radius: 30px;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 
 .language {
-  width: 120px;
-  height: 120px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  border-radius: 30px;
-  background-color: gainsboro;
-  margin: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+width: 120px;
+height: 120px;
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+border-radius: 30px;
+background-color: gainsboro;
+margin: 2%;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .language:hover {
-  background-color: white;
+background-color: white;
 }
 
 
 
 .textarea {
- 
-    border-radius: 30px;
-    
+
+  border-radius: 30px;
+  
 }
 
 
 
 
 .botones {
-  margin-left: auto;
-  margin-right: 2%;
+margin-left: auto;
+margin-right: 2%;
 }
 
 
@@ -209,9 +204,9 @@ a:link {
 
 
 .btns {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    width: 100%;
-    height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  height: 10%;
 }

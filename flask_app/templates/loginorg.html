@@ -31,13 +31,13 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/templates/registerdev.html">Dev Registration</a>
+                  <a class="nav-link active" aria-current="page" href="/devs/register">Dev Registration</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/templates/registerorg.html">Org Registration</a>
+                  <a class="nav-link" href="/orgs/register">Org Registration</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Log Out &#128683</a>
+                  <a class="nav-link" href="/logout">Log Out &#128683</a>
                 </li>
             </div>
           </div>
@@ -53,17 +53,29 @@
       
       <div class="col2">
         <div class="saleschart">
+          {% with messages = get_flashed_messages(category_filter=['login_org']) %}
+                {% if messages %}
+                      <div class="alert alert-danger alerta" role="alert">
+                          {% for message in messages %}
+                              <p>{{message}}</p>
+                          {% endfor %}
+                      </div>
+                  {% endif %} 
+            {% endwith %}
             <h1>Welcome Back!</h1>
             <h2>Let's Find You Some Candidates</h2>
-            <form>
+            <form action="{{url_for('loginorg')}}" method="POST">
             
                 <label for="email">Email:</label>
-                <input class="form-control" type="email" placeholder="Email" aria-label="default input example">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input class="form-control" type="email" name="email" placeholder="Email" aria-label="default input example">
+
+                <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                <button type="submit" class="btn btn-lg btn-success" disabled>Login</button>
+
+                <button type="submit" class="btn btn-lg btn-success">Login</button>
                 </div>
-              </form>
+
+            </form>
         </div>
     
     </div>

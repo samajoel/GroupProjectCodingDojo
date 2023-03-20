@@ -61,3 +61,18 @@ class Count():
         print('EL CONTADOR DE FRAM TRAE:======================', result)
         return result
     
+
+    # Se utiliza para obtener todos los Skills de un Position, sin importar si es de tipo 'lan' o 'fram'
+    @classmethod
+    def getCount_all_Skill_by_position(cls,data):
+        query = """SELECT COUNT(*) AS count
+                    FROM positions
+                    JOIN skills_of_positions
+                    ON positions.id = skills_of_positions.position_id
+                    JOIN skills
+                    ON skills_of_positions.skill_id = skills.id
+                    WHERE positions.id = %(position_id)s AND positions.organization_id = %(organization_id)s;"""
+        result = connectToMySQL(cls.db_name).query_db(query,data)
+        print('EL CONTADOR DE SKILL DE POSITION TRAE:======================', result)
+        return result
+    
