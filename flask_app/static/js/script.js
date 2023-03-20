@@ -11,7 +11,7 @@ $(document).ready(function() {
             url: 'https://api.github.com/users/' + user_list[i],
             dataType: "json",
             success: function(data){
-                $('#' + data.login).html('<a href=' + data.html_url + '><img width=100 heigth=100 src=' + data.avatar_url + ' alt="NO IMAGE"></a>');
+                $('#' + data.login).html('<a href=' + data.html_url + '><img width=100 heigth=100 style="border-radius: 50%;" src=' + data.avatar_url + ' alt="NO IMAGE"></a>');
             },
             error: function(data)
             {

@@ -3,6 +3,7 @@ from flask_app.models.developer import Developer
 from flask_app.models.skill import Skill
 from flask_app.models.skill_of_developer import Skill_of_developer
 from flask_app.models.count import Count
+from flask_app.models.position import Position
 from flask_app import app
 
 from flask_bcrypt import Bcrypt
@@ -42,7 +43,10 @@ def index_dev():
 
 @app.route('/devs/dashboard_dev')
 def dashboard_dev():
-    return render_template('dashboard_dev.html')
+    if 'user_id' not in session:
+        return redirect('/logout')
+
+    return render_template('dashboard_dev.html', allPositions = Position.get_all_position())
 
 
 @app.route('/devs/skill/languages')

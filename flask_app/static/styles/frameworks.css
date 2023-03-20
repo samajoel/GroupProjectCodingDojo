@@ -186,7 +186,16 @@ background-color: white;
 }
 
 
-
+.bio{
+  padding: 30px;
+  font-size: 25px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 
 .botones {
 margin-left: auto;
@@ -194,7 +203,9 @@ margin-right: 2%;
 }
 
 
-
+a:link {
+  text-decoration:none;
+}
 
 
 

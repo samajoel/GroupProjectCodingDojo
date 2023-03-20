@@ -57,7 +57,9 @@
                 </div>
                 <div><h1>Positions to Fill</h1></div>
                 {% for all_position in allPositionByOrganization%}
-                    <a href="#">{{all_position.name}}</a>
+                <div class="position">
+                    <a href="/orgs/jobs/availabledevs">{{all_position.name}}</a>
+                </div>
                 {% endfor %}
                 <!--<div class="position">
                     <a href="">Front-End Developer</a>
@@ -75,9 +77,9 @@
                 <div class="scrollbox">
                     {% for all_dev in allDevelopers %}
                         <div class="availability">
-                            <div class="nameskills">
-                                <div id="{{all_dev.github_user}}"></div>
-                                <h1><a href="">{{all_dev.first_name}}</a></h1>
+                            
+                                <div class="img" id="{{all_dev.github_user}}"></div>
+                                <h1><a href="">{{all_dev.first_name}}{{all_dev.last_name}}</a></h1>
                                 <h1 hidden class="name">{{all_dev.github_user}}</h1>
                                 
                                 <!--<div class="skills">
@@ -91,12 +93,11 @@
                             <div class="scroll">
                                 <p>{{all_dev.short_bio}}</p>
                             </div>
-                        </div>
+                        
+                    </div>
                     {% endfor %}
                 
-
                 </div>
-            </div>
 
         </div>
     </div>
@@ -106,6 +107,7 @@
 
     
     </div>
+</div>
 
 
 

@@ -73,7 +73,7 @@ class Position():
         mysql = connectToMySQL(cls.db_name)
         result = mysql.query_db(query, data)
         print("RESULT en getPosition_by_organization TRAE:", result)
-        print("RESULT en getPosition_by_organization TRAE:", result[0])
+        # print("RESULT en getPosition_by_organization TRAE:", result[0])
         positions =[]
         for position in result:
             positions.append(cls(position))
@@ -97,7 +97,7 @@ class Position():
                     ON positions.id = skills_of_positions.position_id
                     LEFT JOIN skills
                     ON skills_of_positions.skill_id = skills.id
-                    WHERE positions.id = %(id)s AND positions.organization_id = 1;"""
+                    WHERE positions.id = %(id)s AND positions.organization_id = %(organization_id)s;"""
         results =  connectToMySQL(cls.db_name).query_db(query,data)
         print('CONTENIDO de results completo en get_skill_by_position: ', results)
         if len(results) > 0 :
@@ -125,7 +125,7 @@ class Position():
                     WHERE developers.id = %(id)s;"""
             results =  connectToMySQL(cls.db_name).query_db(query,data)
             print('CONTENIDO de results completo: ', results)
-            print('Contenido de results[0]: ',results[0])
+            #print('Contenido de results[0]: ',results[0])
             developer = cls(results[0])
             for result in results:
                 skill_data = {
@@ -140,6 +140,16 @@ class Position():
             return developer
         
 
+    @classmethod
+    def get_all_position(cls):
+        query = "SELECT * FROM positions;"
+        result =  connectToMySQL(cls.db_name).query_db(query)
+        print('Contenido de result en get_all_position TRAE: ',result)
+        positions =[]
+        for row in result:
+            positions.append(cls(row))
+        return positions
+    
     '''
     @classmethod
     def get_skill_fram_by_developer(cls, data):
